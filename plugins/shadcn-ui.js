@@ -1,0 +1,193 @@
+import plugin from "tailwindcss/plugin";
+
+export const shadcnPlugin = plugin(
+  // add CSS variables to the base layer
+  function ({ addBase }) {
+    // addBase({
+    //   ":root": {
+    //     "--background": "0 0% 100%",
+    //     "--foreground": "222.2 84% 4.9%",
+    //     "--muted": "210 40% 96.1%",
+    //     "--muted-foreground": "215.4 16.3% 46.9%",
+    //     "--popover": "0 0% 100%",
+    //     "--popover-foreground": "222.2 84% 4.9%",
+    //     "--card": "0 0% 100%",
+    //     "--card-foreground": "222.2 84% 4.9%",
+    //     "--border": "214.3 31.8% 91.4%",
+    //     "--input": "214.3 31.8% 91.4%",
+    //     "--primary": "222.2 47.4% 11.2%",
+    //     "--primary-foreground": "210 40% 98%",
+    //     "--secondary": "210 40% 96.1%",
+    //     "--secondary-foreground": "222.2 47.4% 11.2%",
+    //     "--accent": "210 40% 96.1%",
+    //     "--accent-foreground": "222.2 47.4% 11.2%",
+    //     "--destructive": "0 84.2% 60.2%",
+    //     "--destructive-foreground": "210 40% 98%",
+    //     "--ring": "215 20.2% 65.1%",
+    //     "--radius": "0.5rem",
+    //   },
+    //   "[data-theme='light']": {
+    //     "--background": "0 0% 100%",
+    //     "--foreground": "222.2 84% 4.9%",
+    //     "--muted": "210 40% 96.1%",
+    //     "--muted-foreground": "215.4 16.3% 46.9%",
+    //     "--popover": "0 0% 100%",
+    //     "--popover-foreground": "222.2 84% 4.9%",
+    //     "--card": "0 0% 100%",
+    //     "--card-foreground": "222.2 84% 4.9%",
+    //     "--border": "214.3 31.8% 91.4%",
+    //     "--input": "214.3 31.8% 91.4%",
+    //     "--primary": "222.2 47.4% 11.2%",
+    //     "--primary-foreground": "210 40% 98%",
+    //     "--secondary": "210 40% 96.1%",
+    //     "--secondary-foreground": "222.2 47.4% 11.2%",
+    //     "--accent": "210 40% 96.1%",
+    //     "--accent-foreground": "222.2 47.4% 11.2%",
+    //     "--destructive": "0 84.2% 60.2%",
+    //     "--destructive-foreground": "210 40% 98%",
+    //     "--ring": "215 20.2% 65.1%",
+    //   },
+    //   "[data-theme='dark']": {
+    //     "--background": "222.2 84% 4.9%",
+    //     "--foreground": "210 40% 98%",
+    //     "--muted": "217.2 32.6% 17.5%",
+    //     "--muted-foreground": "215 20.2% 65.1%",
+    //     "--popover": "222.2 84% 4.9%",
+    //     "--popover-foreground": "210 40% 98%",
+    //     "--card": "222.2 84% 4.9%",
+    //     "--card-foreground": "210 40% 98%",
+    //     "--border": "217.2 32.6% 17.5%",
+    //     "--input": "217.2 32.6% 17.5%",
+    //     "--primary": "210 40% 98%",
+    //     "--primary-foreground": "222.2 47.4% 11.2%",
+    //     "--secondary": "217.2 32.6% 17.5%",
+    //     "--secondary-foreground": "210 40% 98%",
+    //     "--accent": "217.2 32.6% 17.5%",
+    //     "--accent-foreground": "210 40% 98%",
+    //     "--destructive": "0 62.8% 30.6%",
+    //     "--destructive-foreground": "0 85.7% 97.3%",
+    //     "--ring": "217.2 32.6% 17.5%",
+    //   },
+    //   "[data-theme='aqua']": {
+    //     "--background": "180 72% 90%",
+    //     "--foreground": "180 10% 30%",
+    //     "--muted": "180 20% 80%",
+    //     "--muted-foreground": "180 40% 50%",
+    //     "--popover": "180 72% 90%",
+    //     "--popover-foreground": "180 10% 30%",
+    //     "--card": "180 72% 90%",
+    //     "--card-foreground": "180 10% 30%",
+    //     "--border": "180 20% 80%",
+    //     "--input": "180 20% 80%",
+    //     "--primary": "180 10% 30%",
+    //     "--primary-foreground": "180 40% 65%",
+    //     "--secondary": "180 20% 80%",
+    //     "--secondary-foreground": "180 10% 30%",
+    //     "--accent": "180 20% 80%",
+    //     "--accent-foreground": "180 10% 30%",
+    //     "--destructive": "200 80% 60%",
+    //     "--destructive-foreground": "200 20% 10%",
+    //     "--ring": "180 20% 80%",
+    //   },
+    //   "[data-theme='halloween']": {
+    //     "--background": "25 92% 9%",
+    //     "--foreground": "40 96% 90%",
+    //     "--muted": "25 70% 20%",
+    //     "--muted-foreground": "40 96% 70%",
+    //     "--popover": "25 92% 9%",
+    //     "--popover-foreground": "40 96% 90%",
+    //     "--card": "25 92% 9%",
+    //     "--card-foreground": "40 96% 90%",
+    //     "--border": "25 70% 20%",
+    //     "--input": "25 70% 20%",
+    //     "--primary": "40 96% 90%",
+    //     "--primary-foreground": "25 92% 9%",
+    //     "--secondary": "25 70% 20%",
+    //     "--secondary-foreground": "40 96% 90%",
+    //     "--accent": "25 70% 20%",
+    //     "--accent-foreground": "40 96% 90%",
+    //     "--destructive": "345 96% 45%",
+    //     "--destructive-foreground": "0 0% 100%",
+    //     "--ring": "25 70% 20%",
+    //   },
+    // });
+
+    addBase({
+      "*": {
+        "@apply border-border": {},
+      },
+      body: {
+        "@apply bg-background text-foreground": {},
+        "font-feature-settings": '"rlig" 1, "calt" 1',
+      },
+    });
+  },
+  {
+    theme: {
+      container: {
+        center: true,
+        padding: "2rem",
+        screens: {
+          "2xl": "1400px",
+        },
+      },
+      extend: {
+        colors: {
+          border: "hsl(var(--border))",
+          input: "hsl(var(--input))",
+          ring: "hsl(var(--ring))",
+          background: "hsl(var(--background))",
+          foreground: "hsl(var(--foreground))",
+          primary: {
+            DEFAULT: "hsl(var(--primary))",
+            foreground: "hsl(var(--primary-foreground))",
+          },
+          secondary: {
+            DEFAULT: "hsl(var(--secondary))",
+            foreground: "hsl(var(--secondary-foreground))",
+          },
+          destructive: {
+            DEFAULT: "hsl(var(--destructive))",
+            foreground: "hsl(var(--destructive-foreground))",
+          },
+          muted: {
+            DEFAULT: "hsl(var(--muted))",
+            foreground: "hsl(var(--muted-foreground))",
+          },
+          accent: {
+            DEFAULT: "hsl(var(--accent))",
+            foreground: "hsl(var(--accent-foreground))",
+          },
+          popover: {
+            DEFAULT: "hsl(var(--popover))",
+            foreground: "hsl(var(--popover-foreground))",
+          },
+          card: {
+            DEFAULT: "hsl(var(--card))",
+            foreground: "hsl(var(--card-foreground))",
+          },
+        },
+        borderRadius: {
+          lg: "var(--radius)",
+          md: "calc(var(--radius) - 2px)",
+          sm: "calc(var(--radius) - 4px)",
+        },
+        keyframes: {
+          "accordion-down": {
+            from: { height: 0 },
+            to: { height: "var(--radix-accordion-content-height)" },
+          },
+          "accordion-up": {
+            from: { height: "var(--radix-accordion-content-height)" },
+            to: { height: 0 },
+          },
+        },
+        animation: {
+          "accordion-down": "accordion-down 0.2s ease-out",
+          "accordion-up": "accordion-up 0.2s ease-out",
+        },
+      },
+    },
+    plugins: [require("tailwindcss-animate")],
+  }
+);
