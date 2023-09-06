@@ -9,7 +9,7 @@ export default function RootLayout({
   return (
     <>
       <Sidebar>
-        <main>{children}</main>
+        <main className=" w-full p-4">{children}</main>
       </Sidebar>
     </>
   );

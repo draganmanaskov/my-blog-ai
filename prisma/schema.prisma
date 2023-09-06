@@ -54,10 +54,11 @@ model User {
   createdAt     DateTime  @default(now()) @map(name: "created_at")
   updatedAt     DateTime  @default(now()) @map(name: "updated_at")
 
-  accounts Account[]
-  sessions Session[]
-  Post     Post[]
-  ApiKey   ApiKey[]
+  accounts      Account[]
+  sessions      Session[]
+  Post          Post[]
+  Conversations Conversation[]
+  ApiKey        ApiKey[]
 
   @@map(name: "users")
 }
@@ -108,8 +109,25 @@ model Post {
   updatedAt DateTime @default(now()) @map(name: "updated_at")
   authorId  String
 
-  author User @relation(fields: [authorId], references: [id])
+  Conversations Conversation[]
+  author        User           @relation(fields: [authorId], references: [id])
 
   @@index([authorId])
   @@map(name: "posts")
+}
+
+model Conversation {
+  id        String   @id @default(cuid())
+  content   Json?
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @default(now()) @map(name: "updated_at")
+  userId    String
+  postId    String
+
+  user User @relation(fields: [userId], references: [id])
+  post Post @relation(fields: [postId], references: [id])
+
+  @@index([userId])
+  @@index([postId])
+  @@map(name: "conversations")
 }

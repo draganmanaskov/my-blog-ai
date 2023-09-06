@@ -38,11 +38,12 @@ const Sidebar: FC<sidebarProps> = ({ children }) => {
             </svg>
           </label>
         </div>
+        {/* Main contetn here */}
         {children}
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-        <ul className="menu min-h-full w-80 bg-base-200 p-4 text-base-content">
+        <ul className="menu min-h-full w-56 bg-base-200 p-4 text-base-content">
           {/* Sidebar content here */}
           {sidebarLinks.map((link) => {
             return (
